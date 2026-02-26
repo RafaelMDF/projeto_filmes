@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../../services/api.js";
+import "./home.css";
 
 // URL DA API: /movie/now_playing?api_key=b88caf2eb4720fc8da17de51a4c6c549&language=pt-BR
 
 function Home() {
   const [filmes, setFilmes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  function navegarParaDetalhes(id) {
+    navigate(`/filme/${id}`);
+  }
 
   useEffect(() => {
     async function loadFilmes() {
@@ -43,6 +50,12 @@ function Home() {
               <strong>{filme.title}</strong>
               <img src={`https://image.tmdb.org/t/p/w500/${filme.poster_path}`} alt={filme.title} />
               <p>{filme.overview}</p>
+              <button 
+                className="btn-acessar" 
+                onClick={() => navegarParaDetalhes(filme.id)}
+              >
+                Acessar
+              </button>
             </article>
           );
         })}
