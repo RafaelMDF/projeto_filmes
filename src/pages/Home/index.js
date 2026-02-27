@@ -46,16 +46,18 @@ function Home() {
       <div className="lista-filmes">
         {filmes.map((filme) => {
           return (
-            <article key={filme.id}>
-              <strong>{filme.title}</strong>
-              <img src={`https://image.tmdb.org/t/p/w500/${filme.poster_path}`} alt={filme.title} />
-              <p>{filme.overview}</p>
-              <button 
-                className="btn-acessar" 
-                onClick={() => navegarParaDetalhes(filme.id)}
-              >
-                Acessar
-              </button>
+            <article key={filme.id} className="card-filme">
+              <div className="card-image">
+                <img src={`https://image.tmdb.org/t/p/w500/${filme.poster_path}`} alt={filme.title} />
+              </div>
+              <div className="card-footer">
+                <button 
+                  className="btn-acessar" 
+                  onClick={() => navegarParaDetalhes(filme.id)}
+                >
+                  Acessar
+                </button>
+              </div>
             </article>
           );
         })}
