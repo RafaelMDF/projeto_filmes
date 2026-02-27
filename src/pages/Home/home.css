@@ -10,99 +10,96 @@
 
 .lista-filmes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   width: 100%;
   justify-items: center;
   padding: 20px 0;
 }
 
-.lista-filmes article {
+.card-filme {
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  max-width: 280px;
   width: 100%;
-  height: 600px;
+  height: 420px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
-.lista-filmes article:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+.card-filme:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-.lista-filmes article strong {
-  font-size: 18px;
-  margin-bottom: 15px;
-  color: #333;
-  font-weight: bold;
-  line-height: 1.3;
-}
-
-.lista-filmes article img {
-  width: 200px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 15px;
-}
-
-.lista-filmes article p {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #666;
-  margin: 0;
-  text-align: justify;
-  max-height: 120px;
-  overflow-y: auto;
-  margin-bottom: 15px;
+.card-image {
   flex: 1;
-  padding: 8px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  background-color: #fafafa;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
-/* Estilização da barra de scroll */
-.lista-filmes article p::-webkit-scrollbar {
-  width: 6px;
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.lista-filmes article p::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 3px;
+.card-image:hover img {
+  transform: scale(1.05);
 }
 
-.lista-filmes article p::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 3px;
+.card-footer {
+  padding: 20px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
 }
 
-.lista-filmes article p::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+/* Card hover effects */
+.card-filme::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.card-filme:hover::before {
+  left: 100%;
 }
 
 .btn-acessar {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 6px;
+  padding: 12px 32px;
+  border-radius: 25px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  min-width: 120px;
-  margin-top: auto;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  min-width: 140px;
+  position: relative;
+  z-index: 2;
 }
 
 .btn-acessar:hover {
@@ -123,28 +120,24 @@
   }
   
   .lista-filmes {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
   }
   
-  .lista-filmes article {
-    height: 580px;
-  }
-  
-  .lista-filmes article img {
-    width: 180px;
-    height: 270px;
+  .card-filme {
+    height: 380px;
+    max-width: 250px;
   }
 }
 
 @media (max-width: 480px) {
   .lista-filmes {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 15px;
   }
   
-  .lista-filmes article {
+  .card-filme {
     max-width: 100%;
-    height: 560px;
+    height: 360px;
   }
 }
